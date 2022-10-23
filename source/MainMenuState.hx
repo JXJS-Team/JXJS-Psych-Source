@@ -85,6 +85,8 @@ class MainMenuState extends FlxState {
 		super.create();
 		var yScroll:Float = Math.max(0.25 - (0.05 * (options.length - 4)), 0.1);
 
+		FlxG.camera.zoom = 1.2;
+
 		var bg = new FlxSprite().loadGraphic(Paths.image("menuBG"));
 		bg.scrollFactor.set(0, yScroll);
 		bg.setGraphicSize(Std.int(bg.width * 1.175));
