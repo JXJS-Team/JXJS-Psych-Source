@@ -1064,7 +1064,7 @@ class PlayState extends MusicBeatState
 
 		var jxjsEngineWatermark = new FlxText(0, FlxG.height - 8, 0, "");
 		#if PSYCH_WATERMARKS
-		jxjsEngineWatermark.text = "JXJS Engine v : " + MainMenuState.psychEngineVersion;
+		if (TitleState.)
 		#end
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
