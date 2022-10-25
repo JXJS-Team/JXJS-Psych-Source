@@ -1062,10 +1062,19 @@ class PlayState extends MusicBeatState
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
 
-		var jxjsEngineWatermark = new FlxText(0, FlxG.height - 8, 0, "");
+		var jxjsEngineWatermark = new FlxText(-80, FlxG.height - 8, 0, "", 20);
+		jxjsEngineWatermark.scrollFactor.set();
 		#if PSYCH_WATERMARKS
-		if (TitleState.)
+		if (TitleState.mustUpdate) {
+			jxjsEngineWatermark.text = "JXJS Engine v : " + MainMenuState.psychEngineVersion + " | Song : " + SONG.song + " | OUTDATED";
+		} else {
+			jxjsEngineWatermark.text = "JXJS Engine v : " + MainMenuState.psychEngineVersion + " | Song : " + SONG.song;
+		}
 		#end
+		#if !PSYCH_WATERMARKS
+		jxjsEngineWatermark.text = "Funkin v : " +  Application.current.meta.get('version');
+		#end
+		add(jxjsEngineWatermark);
 
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
