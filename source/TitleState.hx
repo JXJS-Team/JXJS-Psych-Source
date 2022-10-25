@@ -133,29 +133,29 @@ class TitleState extends MusicBeatState
 
 		ClientPrefs.loadPrefs();
 
-		// #if CHECK_FOR_UPDATES
-		// if(ClientPrefs.checkForUpdates && !closedState) {
-		// 	trace('checking for update');
-		// 	var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
+		#if CHECK_FOR_UPDATES
+		if(ClientPrefs.checkForUpdates && !closedState) {
+			trace('checking for update');
+			var http = new haxe.Http("https://raw.githubusercontent.com/JXJS-Team/JXJS-Psych-Source/main/gitVersion.txt");
 
-		// 	http.onData = function (data:String)
-		// 	{
-		// 		updateVersion = data.split('\n')[0].trim();
-		// 		var curVersion:String = MainMenuState.psychEngineVersion.trim();
-		// 		trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-		// 		if(updateVersion != curVersion) {
-		// 			trace('versions arent matching!');
-		// 			mustUpdate = true;
-		// 		}
-		// 	}
+			http.onData = function (data:String)
+			{
+				updateVersion = data.split('\n')[0].trim();
+				var curVersion:String = MainMenuState.psychEngineVersion.trim();
+				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+				if(updateVersion != curVersion) {
+					trace('versions arent matching!');
+					mustUpdate = true;
+				}
+			}
 
-		// 	http.onError = function (error) {
-		// 		trace('error: $error');
-		// 	}
+			http.onError = function (error) {
+				trace('error: $error');
+			}
 
-		// 	http.request();
-		// }
-		// #end
+			http.request();
+		}
+		#end
 
 		Highscore.load();
 
@@ -641,14 +641,16 @@ class TitleState extends MusicBeatState
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				case 2:
 					#if PSYCH_WATERMARKS
-					createCoolText(['JXJS Psych by'], 15);
+					createCoolText(['Psych Engine by'], 15);
 					#else
 					createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
 					#end
 				// credTextShit.visible = true;
 				case 4:
 					#if PSYCH_WATERMARKS
-					addMoreText('XuelDev', 15);
+					addMoreText('Shadow Mario', 15);
+					addMoreText('RiverOaken', 15);
+					addMoreText('shubs', 15);
 					#else
 					addMoreText('present');
 					#end

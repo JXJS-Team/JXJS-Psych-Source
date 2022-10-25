@@ -1062,6 +1062,11 @@ class PlayState extends MusicBeatState
 		add(timeTxt);
 		timeBarBG.sprTracker = timeBar;
 
+		var jxjsEngineWatermark = new FlxText(0, FlxG.height - 8, 0, "");
+		#if PSYCH_WATERMARKS
+		jxjsEngineWatermark.text = "JXJS Engine v : " + MainMenuState.psychEngineVersion;
+		#end
+
 		strumLineNotes = new FlxTypedGroup<StrumNote>();
 		add(strumLineNotes);
 		add(grpNoteSplashes);
@@ -2298,6 +2303,7 @@ class PlayState extends MusicBeatState
 	public function updateScore(miss:Bool = false)
 	{
 		scoreTxt.text = 'Score: ' + songScore
+		+ ' | Combo : ' + combo
 		+ ' | Misses: ' + songMisses
 		+ ' | Rating: ' + ratingName
 		+ (ratingName != '?' ? ' (${Highscore.floorDecimal(ratingPercent * 100, 2)}%) - $ratingFC' : '');
